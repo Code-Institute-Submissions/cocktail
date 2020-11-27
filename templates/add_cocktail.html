@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+      <h3 class="light-blue-text text-darken-4 center-align">Add Cocktail</h3>
+
+    <div class="row card-panel grey lighten-5">
+        <form class="col s12" method="POST" action="">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-cocktail prefix light-blue-text text-darken-4"></i>
+                    <input id="cocktail_name" name="cocktail_name" minlength="5" maxlength="50"
+                        type="text" class="validate" required>
+                    <label for="cocktail_name">Cocktail Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <textarea id="description_cocktail" name="description_cocktail" minlength="5"
+                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="description_cocktail">Ingredients with their meausure</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-tint prefix light-blue-text text-darken-4"></i>
+                    <input id="ice" name="ice" type="text" class="datepicker validate" required>
+                    <label for="ice">ICE</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-wine-bottle prefix light-blue-text text-darken-4"></i>
+                    <input id="distilled_name" name="distilled_name" type="text" class="datepicker validate" required>
+                    <label for="distilled_name">Distilled alcohol name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-align-center prefix light-blue-text text-darken-4"></i>
+                    <input id="method" name="method" type="text" class="datepicker validate" required>
+                    <label for="method">Method</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-leaf prefix light-blue-text text-darken-4"></i>
+                    <input id="garnish" name="garnish" type="text" class="datepicker validate" required>
+                    <label for="garnish">Garnish</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-comments prefix light-blue-text text-darken-4"></i>
+                    <input id="comment" name="comment" type="text" class="datepicker validate" required>
+                    <label for="comment">Comment</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
