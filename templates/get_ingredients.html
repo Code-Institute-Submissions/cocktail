@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Book</title>
+</head>
+<body>
+    {% for ingredient in ingredients %}
+        {{ ingredient.distilled_name }}<br>
+        {{ ingredient.cocktail_name }}<br>
+        {{ ingredient.description_cocktail }}<br>
+        {{ ingredient.method }}<br>
+        {{ ingredient.ice }}<br>
+        {{ ingredient.garnish }}<br>
+        {{ ingredient.comment }}<br>
+        
+    {% endfor %}
+</body>
+</html>
