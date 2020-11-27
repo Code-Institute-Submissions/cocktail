@@ -1,14 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!-- User Profile Name -->
     <div class="row">
         <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken 4">
-                    {{ username }}'s Profile
-                </h3>
+            <h3 class="center-align black-text">Hello
+                <b class="deep-orange-text text-lighten-3">{{ username }}</b> !</h3>
+        </div>
+        <div class="col s12 m12 l12 center-align" >
+            <a  href="{{ url_for('edit_profile', username=session['user']) }}" class="btn btn-recipe edit">Edit</a>
+        </div>
+    </div>
+    <!----------------------------------->
+
+    <!-- My Recipes Title -->
+    <h3 class="black-text center-align">
+        My Recipes
+    </h3>
+    <hr class="underline s8 m8 l8">
+    <!----------------------------------->
+
+    <!-- Search Bar ------------------->
+    <div class="row form-search">
+        <div class="col s12 m8 offset-m2">
+            <form action="{{ url_for('search_my_recipe') }}" method="post" class="col s12">
+                <div class="row valign-wrapper center-align" >
+                    <div class="input-field col s12 m8 l10" >
+                        <i class="fas fa-book-open prefix deep-orange-text text-lighten-3"></i>
+                        <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                        <label for="query" class="search-bar"> Search Recipes </label>
+                    </div>
+                    <div class="col s8 m10 l6" >
+                        <button type="submit" class="btn btn-recipe search">Search</button>
+                        <a  href="{{ url_for('get_recipes') }}" class="btn btn-recipe reset">Reset</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Search Bar ------------------------->
+
+    <!-- Search Results-->
+    <div class="row valign-wrapper center-align" >
+        <div class="col s12 m12 l12 total-results">
+            Total Recipes: {{recipes|length}}
+        </div>
+    </div>
+    <!-- End Search Results-->
+
+    <!-- User Recipes --------------------->
+    <div class="row center-align" style="max-width: 80%;">
+        {% for recipe in recipes %}
+        <div class="col s12 m12 l4">
+            <div class="card">
+                <div class="card-image">
+                    <a href="{{url_for('recipe', recipe_id=recipe._id)}}">
+                        <img class="responsive-img image" src="{{ recipe.recipe_image }}" alt="{{ recipe.recipe_name }}">
+                    </a>
+                </div>
+                <div class="card-content">
+                    <a href="{{url_for('recipe', recipe_id=recipe._id)}}">
+                        <span class="card-title">{{ recipe.recipe_name }}</span></a>
+                <div>
+                    <h5 class="recipe-description">{{ recipe.recipe_description }}</h5>
+                </div>
+                </div>
+                <!-- Buttons -->
+                <div class="card-action">
+                        <!-- Edit Button -->
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn btn-recipe edit">Edit</a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 
 {% endblock %}

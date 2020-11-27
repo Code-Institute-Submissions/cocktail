@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for ingredient in ingredients %}
-        {{ ingredient.distilled_name }}<br>
-        {{ ingredient.cocktail_name }}<br>
-        {{ ingredient.description_cocktail }}<br>
-        {{ ingredient.method }}<br>
-        {{ ingredient.ice }}<br>
-        {{ ingredient.garnish }}<br>
-        {{ ingredient.comment }}<br> 
-    {% endfor %}
+
+	<ul class="collapsible">
+        {% for ingredient in ingredients %}
+		<li>
+			<div class="collapsible-header"><i class="fas fa-arrow-circle-right"></i>
+            <strong>{{ ingredient.cocktail_name }}</strong>
+            </div>
+			<div class="collapsible-body">
+            <h5>DESCRIPTION:</h5><p>{{ ingredient.description_cocktail }}</p><hr>
+            <h5>METHOD:</h5><p>{{ ingredient.method }} </p><hr>
+            <h5>ICE:</h5><p>{{ ingredient.ice }} </p><hr>
+            <h5>GARNISH:</h5><p>{{ ingredient.garnish }} </p><hr>
+            <h5>COMMENT:</h5><p>{{ ingredient.comment }} </p><hr>
+            <h5>MAIN DISTILLED ALCOHOL:</h5><p>{{ ingredient.distilled_name }} </p><hr>
+
+            </div>
+
+		</li>
+        {% endfor %}
+	</ul>
+        
 {% endblock %}

@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
-    <title>Task Manager</title>
+    <title>Cocktail Book</title>
 </head>
 <body>
    <header>
         <!-- top navbar -->
-		<nav class="nav-extended text-shadow light-blue darken-1">
+		<nav class="nav-extended text-shadow indigo lighten-5">
 			<div class="nav-wrapper">
-				<a href="{{ url_for('get_ingredients') }}" class="brand-logo">Task Manager</a>
+				<a href="{{ url_for('get_ingredients') }}" class="brand-logo">Cocktail Book</a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
 					<li><a href="{{ url_for('get_ingredients') }}">Home</a></li>
@@ -32,7 +32,7 @@
 
         <!-- mobile sidenav -->
 		<ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align light-blue-text text-darken 4">Task Manager</h4></li>
+            <li><h4 class="center-align blue-grey lighten-2">Task Manager</h4></li>
             <li><a href="{{ url_for('get_ingredients') }}">Home</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">New Task</a></li>

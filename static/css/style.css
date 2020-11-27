@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+body{
+    font-family: 'Oswald', sans-serif;
+    background-image:url(https://www.glimpsecorp.com/wp-content/uploads/2018/04/Bartender-tools.jpg);
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card-panel{
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+
+.nav-extended{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.collapsible,
+.collapsible-header{ 
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+.collapsible-body{
+    background-color: grey;
+    color: white;
 }
