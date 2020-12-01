@@ -17,13 +17,16 @@
 				</div>
 			</div>
 			<div class="collapsible-body">
+			<div class="col s12 m12 l6">
+				<img class="responsive-img image-shadow image" width="250px" height="250px" src="{{ ingredient.image_url }}" alt="{{ ingredient.image_url }}">
+			 </div>
             <h5>DESCRIPTION:</h5><p>{{ ingredient.description_cocktail }}</p><hr>
             <h5>METHOD:</h5><p>{{ ingredient.method }} </p><hr>
             <h5>ICE:</h5><p>{{ ingredient.ice }} </p><hr>
             <h5>GARNISH:</h5><p>{{ ingredient.garnish }} </p><hr>
             <h5>COMMENT:</h5><p>{{ ingredient.comment }} </p><hr>
             <h5>MAIN DISTILLED ALCOHOL:</h5><p>{{ ingredient.category_name }} </p><hr>
-            <p><em>{{ ingredient.created_by }}</em></p>
+            <strong>Created by:<p><em>{{ ingredient.created_by }}</em></p></strong>
 
             </div>
 		</li>

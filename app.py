@@ -143,6 +143,11 @@ def delete_cocktail(ingredient_id):
     return redirect(url_for("get_ingredients"))
 
 
+@app.route("/get_cocktails")
+def get_cocktails():
+    cocktails = list(mongo.db.ingredients.find().sort("category_name", 1))
+    return render_template("cocktails.html", cocktails=cocktails)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

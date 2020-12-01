@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+    {% for cocktail in cocktails %}
+    <div class="col s12 m7">
+    
+      <div class="card blue-grey lighten-5">
+      <div class="card-image">
+          <img src="{{ cocktail.image_url }}">
+          <span class="card-title">{{ cocktail.cocktail_name }}</span>
+        </div>
+        <div class="card-content black-text">
+
+
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
