@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
     <div class="row">
     {% for cocktail in cocktails %}
-    <div class="col s12 m7">
-    
+    <div class="col s12 m4">
       <div class="card blue-grey lighten-5">
       <div class="card-image">
-          <img src="{{ cocktail.image_url }}">
+          <img src="{{ cocktail.image_url }}" width="100" height="250" alt="{{ cocktail.cocktail_name }}">
           <span class="card-title">{{ cocktail.cocktail_name }}</span>
         </div>
         <div class="card-content black-text">
@@ -14,8 +14,8 @@
 
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
+          <a href="#" class="btn green accent-4 center-align">Edit</a>
+          <a href="#" class="btn light-blue lighten-1">Delete</a>
         </div>
       </div>
     </div>

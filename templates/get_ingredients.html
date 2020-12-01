@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-
+    <div class="row card-panel white text-black">
+        <form action="{{ url_for('search') }}" method="post" class="col-12">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <input type="text" name="query" minlength="3" id="query" class="validate" required>
+                    <label for="query">Search Cocktail</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_ingredients') }}" class="red btn text-shadow">Reset</a>
+                    <button type="submit" class="light-blue darken-1 text-shadow">
+                    Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 	<ul class="collapsible">
         {% for ingredient in ingredients %}
 		<li>
