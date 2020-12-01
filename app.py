@@ -116,6 +116,34 @@ def add_cocktail():
     return render_template("add_cocktail.html", categories = categories)
 
 
+@app.route("/edit_cocktails/<ingredient_id>", methods=["GET", "POST"])
+def edit_cocktail(ingredient_id):
+    if request.method == "POST":
+        submit_cocktail = {
+            "category_name" : request.form.get("category_name"),
+            "cocktail_name" : request.form.get("cocktail_name"),
+            "description_cocktail" : request.form.get("description_cocktail"),
+            "ice" : request.form.get("ice"),
+            "garnish" : request.form.get("garnish"),
+            "method" : request.form.get("method"),
+            "comment" : request.form.get("comment")
+        }
+        mongo.db.ingredients.update({"_id": ObjectId(ingredient_id) },submit_cocktail)
+        flash("Cocktail has been update.")
+        
+    ingredient = mongo.db.ingredients.find_one({"_id": ObjectId(ingredient_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_cocktail.html", ingredient=ingredient ,categories = categories)
+
+
+@app.route("/delete_cocktail/<ingredient_id>")
+def delete_cocktail(ingredient_id):
+    mongo.db.ingredients.remove({"_id": ObjectId(ingredient_id) })
+    flash("Cocktail has been deleted.")
+    return redirect(url_for("get_ingredients"))
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
