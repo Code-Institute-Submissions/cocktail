@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-      <h3 class="light-blue-text text-darken-4 center-align">Edit Cocktail</h3>
+      <h3 class="black-text text-darken-4 center-align">Edit Cocktail</h3>
 
     <div class="row card-panel  blue-grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('edit_cocktail', ingredient_id=ingredient._id) }}">
 					<div class="row">
 						<div class="input-field col s12">
-							<i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+							<i class="fas fa-folder-open prefix black-text text-darken-4"></i>
 							<select id="category_name" name="category_name" class="validate" required>
 					                        <option value="" disabled selected>Choose Spirit</option>
 					                        {% for category in categories %}
@@ -24,7 +24,7 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-cocktail prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-cocktail prefix black-text text-darken-4"></i>
                     <input id="cocktail_name" name="cocktail_name" minlength="5" maxlength="50" value="{{ ingredient.cocktail_name }}"
                         type="text" class="validate" required>
                     <label for="cocktail_name">Cocktail Name</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-align-left prefix black-text text-darken-4"></i>
                     <textarea id="description_cocktail" name="description_cocktail" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>{{ ingredient.description_cocktail }}</textarea>
                     <label for="description_cocktail">Ingredients with their meausure</label>
@@ -40,53 +40,61 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-tint prefix light-blue-text text-darken-4"></i>
-                    <input id="ice" name="ice" minlength="5" maxlength="20" value="{{ ingredient.ice }}"
+                    <i class="fas fa-tint prefix black-text text-darken-4"></i>
+                    <input id="ice" name="ice" minlength="5"  value="{{ ingredient.ice }}"
                         type="text" class="validate" required>
-                    <label for="ice">ICE</label>
+                    <label for="ice">Ice</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-center prefix light-blue-text text-darken-4"></i>
-                    <input id="method" name="method" minlength="5" maxlength="50" value="{{ ingredient.method }}"
+                    <i class="fas fa-align-center prefix black-text text-darken-4"></i>
+                    <input id="method" name="method" minlength="5"  value="{{ ingredient.method }}"
                         type="text" class="validate" required>
                     <label for="method">Method</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-leaf prefix light-blue-text text-darken-4"></i>
-                    <input id="garnish" name="garnish" minlength="5" maxlength="50" value="{{ ingredient.garnish }}"
+                    <i class="fas fa-leaf prefix black-text text-darken-4"></i>
+                    <input id="garnish" name="garnish" minlength="5"  value="{{ ingredient.garnish }}"
                         type="text" class="validate" required>
                     <label for="garnish">Garnish</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-image prefix light-blue-text text-darken-4"></i>
-                    <input id="image_url" name="image_url"
-                        type="text" class="validate">
-                    <label for="image_url">Add image url (optional)</label>
+                    <i class="fas fa-comments prefix black-text text-darken-4"></i>
+                    <input id="comment" name="comment" minlength="5"  value="{{ ingredient.comment }}"
+                        type="text" class="validate" required>
+                    <label for="comment">Comment</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-comments prefix light-blue-text text-darken-4"></i>
-                    <input id="comment" name="comment" minlength="5" maxlength="50" value="{{ ingredient.comment }}"
+                    <i class="fas fa-glass-whiskey prefix black-text text-darken-4"></i>
+                    <input id="glass" name="glass" minlength="5" 
                         type="text" class="validate" required>
-                    <label for="comment">Comment</label>
+                    <label for="glass">Glass</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="fas fa-image prefix black-text text-darken-4"></i>
+                    <input id="image_url" name="image_url"
+                        type="text" class="validate">
+                    <label for="image_url">Add image url (optional)</label>
                 </div>
             </div>
             <!-- submit button -->
             <div class="row">
                 <div class="col s12 center-align">
                     <!-- cancel button -->
-                    <a href="{{ url_for('get_ingredients') }}" class="btn-large red text-shadow">
-                        Cancel <i class="fas fa-times-circle right"></i>
+                    <a href="{{ url_for('get_ingredients') }}" class="btn-reset">
+                        Cancel 
                     </a>
-                    <button type="submit" class="btn-small light-blue darken-1 text-shadow">
-                        Edit Cocktail <i class="fas fa-edit right"></i>
+                    <button type="submit" class="btn-edit">
+                        Edit Cocktail 
                     </button>
                 </div>
             </div>

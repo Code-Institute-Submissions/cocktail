@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card-panel">
-                <h3 class="light-blue-text text-darken-4 center-align">{{ username }}'s Profile</h3>
-            </div>
-        </div>
-    </div>
+
+    <div class="row home-pg">
+			<div class="card-panel bg-home">
+				<div class="card-content">
+					<h1> Welcome Back {{ username }}.  </h1>
+                    <!-- button to connect to my cocktails page  -->
+					<a class="btn-home" href="{{ url_for('get_ingredients') }}">My Cocktails </a>
+				</div>
+			</div>
+		</div>
+        
 
 {% endblock %}

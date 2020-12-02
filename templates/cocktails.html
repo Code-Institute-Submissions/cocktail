@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<h3 class="black-text text-darken-4 center-align">Cocktails</h3>
+<!-- Search bar -->
     <div class="row card-panel white text-black">
         <form action="{{ url_for('search_cocktails') }}" method="post" class="col-12">
             <div class="row valign-wrapper center-align">
@@ -16,6 +18,7 @@
             </div>
         </form>
     </div>
+<!-- showing the list of all the cocktails  -->
     <div class="row">
     {% for cocktail in cocktails %}
     <div class="col s12 m4">
@@ -41,6 +44,10 @@
             <li>
 				<div class="collapsible-header"><i class="material-icons"></i>Garnish</div>
 				<div class="collapsible-body"><span>{{ cocktail.garnish }}</span></div>
+			</li>
+            <li>
+				<div class="collapsible-header"><i class="material-icons"></i>Glass</div>
+				<div class="collapsible-body"><span>{{ cocktail.glass }}</span></div>
 			</li>
             <li>
 				<div class="collapsible-header"><i class="material-icons"></i>Comment</div>

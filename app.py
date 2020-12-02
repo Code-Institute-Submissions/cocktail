@@ -33,7 +33,8 @@ def get_ingredients():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    ingredients = list(mongo.db.ingredients.find({"$text":{"$search":query}}))
+    ingredients = list(mongo.db.ingredients.find(
+        {"$text":{"$search":query}}))
     return render_template("get_ingredients.html", ingredients=ingredients)
 
 
@@ -57,6 +58,8 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
+
     return render_template("register.html")
 
 
@@ -71,8 +74,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -83,6 +86,13 @@ def login():
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
     return render_template("login.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    return render_template("profile.html", username=username)
 
 
 @app.route("/logout")
@@ -104,6 +114,8 @@ def add_cocktail():
             "garnish": request.form.get("garnish"),
             "method": request.form.get("method"),
             "comment": request.form.get("comment"),
+            "image_url": request.form.get("image_url"),
+            "glass": request.form.get("glass"),
             "created_by": session["user"]
         }
         mongo.db.ingredients.insert_one(ingredient)
@@ -123,12 +135,17 @@ def edit_cocktail(ingredient_id):
             "ice": request.form.get("ice"),
             "garnish": request.form.get("garnish"),
             "method": request.form.get("method"),
-            "comment": request.form.get("comment")
+            "comment": request.form.get("comment"),
+            "image_url": request.form.get("image_url"),
+            "glass": request.form.get("glass"),
+            "created_by": session["user"]
         }
-        mongo.db.ingredients.update({"_id": ObjectId(ingredient_id)}, submit_cocktail)
+        mongo.db.ingredients.update(
+            {"_id": ObjectId(ingredient_id)}, submit_cocktail)
         flash("Cocktail has been update.")
         
-    ingredient = mongo.db.ingredients.find_one({"_id": ObjectId(ingredient_id)})
+    ingredient = mongo.db.ingredients.find_one(
+        {"_id": ObjectId(ingredient_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_cocktail.html", ingredient=ingredient ,categories=categories)
 

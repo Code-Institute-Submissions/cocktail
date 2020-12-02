@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+<h3 class="black-text text-darken-4 center-align">My Cocktails</h3>
+<!-- search bar  -->
     <div class="row card-panel white text-black">
         <form action="{{ url_for('search') }}" method="post" class="col-12">
             <div class="row valign-wrapper center-align">
@@ -16,6 +18,7 @@
             </div>
         </form>
     </div>
+<!-- collapsible list of user's cocktails  -->
 	<ul class="collapsible">
         {% for ingredient in ingredients %}
             {% if session.user|lower == ingredient.created_by|lower %}
@@ -26,22 +29,24 @@
 				</div>
 			</div>
 			<div class="collapsible-body">
-			<div class="col s12 m12 l6">
-				<img class="responsive-img image-shadow image" width="250px" height="250px" src="{{ ingredient.image_url }}" alt="{{ ingredient.image_url }}">
-			 </div>
-            <h5>DESCRIPTION:</h5><p>{{ ingredient.description_cocktail }}</p><hr>
-            <h5>METHOD:</h5><p>{{ ingredient.method }} </p><hr>
-            <h5>ICE:</h5><p>{{ ingredient.ice }} </p><hr>
-            <h5>GARNISH:</h5><p>{{ ingredient.garnish }} </p><hr>
-            <h5>COMMENT:</h5><p>{{ ingredient.comment }} </p><hr>
-            <h5>MAIN DISTILLED ALCOHOL:</h5><p>{{ ingredient.category_name }} </p><hr>
-            <strong>Created by:<p><em>{{ ingredient.created_by }}</em></p></strong>
-            <div class="col s6">
-					{% if session.user|lower == ingredient.created_by|lower %}
-                        <a href="{{ url_for('delete_cocktail', ingredient_id=ingredient._id) }}" class=" btn-delete">Delete</a>
-                        <a href="{{ url_for('edit_cocktail', ingredient_id=ingredient._id) }}" class="btn-edit"> Edit</a>
-					{% endif %}
-				</div>
+			        <div class="col s12 m12 l6">
+				        <img class="responsive-img image-shadow image" width="250px" height="250px" src="{{ ingredient.image_url }}" alt="{{ ingredient.image_url }}">
+					</div>
+                    <h5>Description:</h5><p>{{ ingredient.description_cocktail }}</p><hr>
+                    <h5>Method:</h5><p>{{ ingredient.method }} </p><hr>
+                    <h5>Ice:</h5><p>{{ ingredient.ice }} </p><hr>
+                    <h5>Garnish:</h5><p>{{ ingredient.garnish }} </p><hr>
+                    <h5>Glass:</h5><p>{{ ingredient.glass }} </p><hr>
+                    <h5>Comment:</h5><p>{{ ingredient.comment }} </p><hr>
+                    <h5>Main distilled alcohol:</h5><p>{{ ingredient.category_name }} </p><hr>
+                    Created by:<p>{{ ingredient.created_by }}</p>
+<!-- button for editing or deleting cocktail -->
+                <div class="col s6">
+                        {% if session.user|lower == ingredient.created_by|lower %}
+                            <a href="{{ url_for('delete_cocktail', ingredient_id=ingredient._id) }}" class=" btn-delete">Delete</a>
+                            <a href="{{ url_for('edit_cocktail', ingredient_id=ingredient._id) }}" class="btn-edit"> Edit</a>
+                        {% endif %}
+                </div>
             </div>
 		</li>
             {% endif %}
