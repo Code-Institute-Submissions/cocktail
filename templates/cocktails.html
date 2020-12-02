@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-
+    <div class="row card-panel white text-black">
+        <form action="{{ url_for('search_cocktails') }}" method="post" class="col-12">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <input type="text" name="query" minlength="3" id="query" class="validate" required>
+                    <label for="query">Search Cocktail</label>
+                </div>
+                <div class="col s12 m4">
+                    <a href="{{ url_for('get_cocktails') }}" class="btn-reset">Reset</a>
+                    <button type="submit" class="btn-search">
+                    Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="row">
     {% for cocktail in cocktails %}
     <div class="col s12 m4">
@@ -10,12 +25,32 @@
           <span class="card-title">{{ cocktail.cocktail_name }}</span>
         </div>
         <div class="card-content black-text">
-
-
-        </div>
-        <div class="card-action">
-          <a href="#" class="btn green accent-4 center-align">Edit</a>
-          <a href="#" class="btn light-blue lighten-1">Delete</a>
+		<ul class="collapsible">
+			<li>
+				<div class="collapsible-header"><i class="material-icons"></i>Description</div>
+				<div class="collapsible-body"><span>{{ cocktail.description_cocktail }}</span></div>
+			</li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons"></i>Method</div>
+				<div class="collapsible-body"><span>{{ cocktail.method }}</span></div>
+			</li>
+            <li>
+				<div class="collapsible-header"><i class="material-icons"></i>Ice</div>
+				<div class="collapsible-body"><span>{{ cocktail.ice }}</span></div>
+			</li>
+            <li>
+				<div class="collapsible-header"><i class="material-icons"></i>Garnish</div>
+				<div class="collapsible-body"><span>{{ cocktail.garnish }}</span></div>
+			</li>
+            <li>
+				<div class="collapsible-header"><i class="material-icons"></i>Comment</div>
+				<div class="collapsible-body"><span>{{ cocktail.comment }}</span></div>
+			</li>
+            <li>
+				<div class="collapsible-header"><i class="material-icons"></i>Created by:</div>
+				<div class="collapsible-body"><span>{{ cocktail.created_by }}</span></div>
+			</li>
+		</ul>
         </div>
       </div>
     </div>

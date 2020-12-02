@@ -1,29 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 
-body{
-    font-family: 'Oswald', sans-serif;
-    background-image:url(https://www.glimpsecorp.com/wp-content/uploads/2018/04/Bartender-tools.jpg);
+body {
+  font-family: "Major Mono Display", monospace;
+  background-image: url(https://www.glimpsecorp.com/wp-content/uploads/2018/04/Bartender-tools.jpg);
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.home-pg {
+  padding-top: 100px;
+}
+.card-panel {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+}
+.card-content {
+  text-align: center;
+  color: black;
+  padding: auto;
+  font-family: "Major Mono Display", monospace;
+  font-size: 15px;
 }
 
-.card-panel{
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    border-radius: 25px;
+.nav-extended {
+  background-color: grey;
 }
-
-.nav-extended{
-    color: rgba(0, 0, 0, 0.5);
+.nav-wrapper a {
+  font-size: 15px;
 }
 
 .collapsible,
-.collapsible-header{ 
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    border-radius: 25px;
+.collapsible-header {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
 }
-.collapsible-body{
-    background-color: grey;
-    color: white;
+.collapsible-body {
+  background-color: grey;
+  color: white;
 }
+
+/* buttons */
+
+.btn-home {
+  background-color: black;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 10px;
+}
+.btn-delete{
+  background-color: orangered;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  border-radius: 12px;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-edit{
+  background-color: blue;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  border-radius: 12px;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+}
+.btn-reset{
+  background-color: orangered;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  border-radius: 12px;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+}
+.btn-search{
+  background-color: turquoise;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  border-radius: 12px;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+}
+
