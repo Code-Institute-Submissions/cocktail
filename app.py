@@ -34,7 +34,7 @@ def get_ingredients():
 def search():
     query = request.form.get("query")
     ingredients = list(mongo.db.ingredients.find(
-        {"$text":{"$search":query}}))
+        {"$text": {"$search": query}}))
     return render_template("get_ingredients.html", ingredients=ingredients)
 
 
@@ -54,12 +54,10 @@ def register():
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(register)
-
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
-
     return render_template("register.html")
 
 
@@ -80,7 +78,6 @@ def login():
                 # invalid password match
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
@@ -142,12 +139,11 @@ def edit_cocktail(ingredient_id):
         }
         mongo.db.ingredients.update(
             {"_id": ObjectId(ingredient_id)}, submit_cocktail)
-        flash("Cocktail has been update.")
-        
-    ingredient = mongo.db.ingredients.find_one(
+        flash("Cocktail has been update.")  
+        ingredient = mongo.db.ingredients.find_one(
         {"_id": ObjectId(ingredient_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_cocktail.html", ingredient=ingredient ,categories=categories)
+    return render_template("edit_cocktail.html", ingredient=ingredient , categories=categories)
 
 
 @app.route("/delete_cocktail/<ingredient_id>")
@@ -166,7 +162,7 @@ def get_cocktails():
 @app.route("/search_cocktails", methods=["GET", "POST"])
 def search_cocktails():
     query = request.form.get("query")
-    cocktails = list(mongo.db.ingredients.find({"$text":{"$search":query}}))
+    cocktails = list(mongo.db.ingredients.find({"$text": {"$search": query}}))
     return render_template("cocktails.html", cocktails=cocktails)
 
 

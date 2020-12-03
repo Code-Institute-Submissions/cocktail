@@ -20,7 +20,7 @@ body {
 .card-content {
   text-align: center;
   color: black;
-  padding: auto;
+  padding: 10px;
   font-family: "Major Mono Display", monospace;
   font-size: 15px;
 }
