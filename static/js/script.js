@@ -2,6 +2,7 @@ $(document).ready(function () {
     $(".sidenav").sidenav({edge: "right"});
     $('.collapsible').collapsible();
     $('select').formSelect();
+/* The code below is copied from mini project Task manager */
 
     validateMaterializeSelect();
     function validateMaterializeSelect() {
